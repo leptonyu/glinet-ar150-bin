@@ -1,0 +1,16 @@
+{
+  "packages": {
+    "basic": "libustream-openssl -dnsmasq dnsmasq-full -wpad-mini iwinfo kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 kmod-nf-nathelper-extra luci luci-mod-rpc ethtool fcgi lighttpd lighttpd-mod-openssl lighttpd-mod-access lighttpd-mod-cgi lighttpd-mod-expire lighttpd-mod-fastcgi lighttpd-mod-proxy unzip wpa-cli wpad bridge ip-full -unbound stubby mwan3 ca-bundle ca-certificates",
+    "vpn": "-openvpn-openssl tinc -wireguard -gl-wg -gl-wg-server -gl-vpn -gl-vpn-server -gl-ss -gl-ss-server",
+    "storage": "blkid -kmod-fs-ext4 -kmod-fs-ntfs -kmod-fs-vfat -kmod-fs-exfat -ntfs-3g -samba36-server",
+    "glinet": "gl-crond gl-s2s gl-portal gl-cloud-ui gl-route-policy gl-qos gl-tertf gl-fw gl-base-files gl-files-brower gl-firewall gl-modem gl-repeater gl-sdk gl-software gl-ui gl-util gl-wan-detect gl-wifi-core gl-monitor"
+  },
+  "profiles": {
+    "ar150": {
+      "profile": "gl-ar150",
+      "version": "3.027",
+      "imagebuilder": "3.1/openwrt-imagebuilder-ar71xx-generic_3.1",
+      "packages": "gl-base-files-ar $basic $vpn $storage $glinet"
+    }
+  }
+}

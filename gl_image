@@ -309,6 +309,8 @@ def main(argv):
     if not os.path.isdir(dir_name):
         # check_call("git clone --single-branch -b %s --depth=1 %s %s" % (branch, url, dir_name), shell=True)
         check_call("git clone %s %s" % (gl_inet_ipks_url, dir_name), shell=True)
+        check_call("cp ../pkgs/*.ipk ar71xx", shell=True, cwd=dir_name)
+        check_call("cp ../icymint.json images.json", shell=True, cwd=dir_name)
 
     c = Config(filename)
 
