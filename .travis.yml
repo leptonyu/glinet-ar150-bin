@@ -1,0 +1,25 @@
+dist: bionic
+cache:
+  bundler: true
+  directories:
+  - cache/
+notifications:
+  email: false
+language: c
+compiler: gcc
+before_install:
+- sudo apt install device-tree-compiler gawk gcc git g++ make ncurses-dev python unzip -y
+addons:
+  apt:
+    update: true
+script:
+- ./gl_image -p ar150
+deploy:
+  provider: releases
+  api_key:
+    secure: 3jv+9bAfmDc6V6cqnGh+ghqLVJIa2mHNFrrxrkIwxUPsujCz/ASQDlPFnOBKgNNUzKc4OpgOS6her9RAxPudZP9WPXemiXP/d7Gb7+uKfofDIS07ihXzb8zxiY5E28Hk4izq25ezhvAZZ3IrRKjb7U4QiioliSijkr2ul1mm0OprJemml6jfABYs5GLpZMYIfrvXoxVz2/w00tFAQqh4fh3WeUQxPTn8LvHh7zEgJLtRN+NzrqHa/9ElDMqR9bKrcfWrbmxyTRHPlUfyTfyaU+74TFIkjywtxpUq+FVmz8n1Arkl/zfazx2vEHEaL8iXeJx6OZIzfWFLrlad+6m8uJDtzZl0loOf29abiu+5znwWvdlZqbKcAjC1o7yQ/mm6smuUeWZHdec+NX64Jv5V/c2ALwYxTWwyXr7fO2nsnc0mYggrNFAbJioayL63UceqG/nMhE5TTSr2+WZIyVlkBKEJSbfXyR5Krxn8b3u+pqHttHQRzEDN4256l61w8WeaDt2yomiV0lgz/zJQ3ZSE8RIeUPpd0rxH7q4b8TmqLI2x/QK6p05SajtKGQfngKRxL78d1g9ZtiFT3Kx8SE5BkRJMb13httDH1nwpiSXUaxHwdpyelUu9UOx1kc4/plN/p2byCtXX/AgwqToE1eCN3D+On2pAjC6r2CRKa/3Fvk0=
+  file_glob: true
+  file: bin/ar150/*
+  skip_cleanup: true
+  on:
+    tags: true
